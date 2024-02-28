@@ -22,6 +22,8 @@ public class PersonaRepositoryImpl implements IPersonaRepository{
 
     @Override
     public void actualizar(Persona persona) {
+        // Busco el objeto persona
+        // O Me aseguro que tenga la primaryKey
         this.entityManager.merge(persona);
     }
 

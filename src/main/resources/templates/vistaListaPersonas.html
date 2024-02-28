@@ -1,32 +1,49 @@
-<!doctype html >
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Document</title>
 </head>
 <body>
-<h1>Hola mundo desde JAVA</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Cédula</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Genero</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!--   <tr th:each="elementoAIterar:${sobreLoQueItera}"> -->
-    <tr th:each="persona:${personas}">
-        <td th:text="${persona.cedula}"></td>
-        <td th:text="${persona.nombre}"></td>
-        <td th:text="${persona.apellido}"></td>
-        <td th:text="${persona.genero}"></td>
-    </tr>
-    </tbody>
-</table>
+<div>
+
+    <h1>Hola Mundo, esta es mi tabla: </h1>
+
+    <table>
+        <thead>
+        <tr>
+            <td>Cedula</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Género</td>
+            <td>Acción</td>
+            <td>Acción</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="persona:${personas}">
+            <td th:text="${persona.cedula}"></td>
+            <td th:text="${persona.nombre}"></td>
+            <td th:text="${persona.apellido}"></td>
+            <td th:text="${persona.genero}"></td>
+            <td>
+                <form th:action="@{/personas/buscarPorCedula/{cedu}(cedu=${persona.cedula})}"
+                      th:method="GET">
+                    <input type="submit" value="Editar">
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/personas/borrar/{cedu}(cedu=${persona.cedula})}"
+                      th:method="DELETE">
+                    <input type="submit" value="Eliminar">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
